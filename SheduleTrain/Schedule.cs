@@ -37,6 +37,37 @@ namespace SheduleTrain
                 Console.WriteLine(item.ToString());
             }
         }
+
+        public Dictionary<WeekDays, int> Count()
+        {
+            var dic = Enum.GetValues(typeof(WeekDays))
+                        .Cast<WeekDays>()
+                        .ToList()
+                        .ToDictionary(weekDay => weekDay, weekDay => listLessons.Count(lesson => lesson.weekDay == weekDay));
+            return dic;
+
+
+            #region второй вариант
+            //var dict = listLessons.GroupBy(lesson => lesson.weekDay)
+            //                        .ToDictionary(group => group.Key, group => group.Count());
+            //foreach (var item in dic)
+            //{
+            //    if(!dict.ContainsKey(item)) 
+            //        dict.Add(item, 0);
+            //}
+            //return dict;
+            #endregion
+        }
+        /// <summary>
+        /// выводит количество пар по каждому дню недели
+        /// </summary>
+        public void PrintPrettyCount()
+        {
+            foreach (var item in this.Count())
+            {
+                Console.WriteLine($"{item.Key} : {item.Value} пар");
+            }
+        }
     }
 
     public class Lesson
@@ -70,10 +101,31 @@ namespace SheduleTrain
             this.groupNumber = groupNumber;
         }
 
-
+        public string GetRusWeekDay()
+        {
+            switch (weekDay)
+            {
+                case WeekDays.Monday:
+                    return "Понедельник";
+                case WeekDays.Tuesday:
+                    return "Вторник";
+                case WeekDays.Wednesday:
+                    return "Среда";
+                case WeekDays.Thursday:
+                    return "Четверг";
+                case WeekDays.Friday:
+                    return "Пятница";
+                case WeekDays.Saturday:
+                    return "Суббота";
+                case WeekDays.Sunday:
+                    return "Воскресенье";
+            }
+            return "";
+        }
         public override string ToString()
         {
-            return $"{label}., {number} пара {weekDay}., {groupNumber} группа, {weekNumber}";
+            var weekDayRus = GetRusWeekDay();
+            return $"{label}., {number} пара {weekDayRus}., {groupNumber} группа, {weekNumber}";
         }
     }
 }

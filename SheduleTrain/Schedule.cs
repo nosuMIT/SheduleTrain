@@ -73,7 +73,32 @@ namespace SheduleTrain
 
         public override string ToString()
         {
-            return $"{label}., {number} пара {weekDay}., {groupNumber} группа, {weekNumber}";
+            string _weekDay = "";
+            switch (this.weekDay)
+            {
+                case WeekDays.Monday:
+                    _weekDay = "понедельник";
+                    break;
+                case WeekDays.Tuesday:
+                    _weekDay = "вторник";
+                    break;
+                case WeekDays.Wednesday:
+                    _weekDay = "среда";
+                    break;
+                case WeekDays.Thursday:
+                    _weekDay = "четверг";
+                    break;
+                case WeekDays.Friday:
+                    _weekDay = "пятница";
+                    break;
+                case WeekDays.Saturday:
+                    _weekDay = "суббота";
+                    break;
+                case WeekDays.Sunday:
+                    _weekDay = "воскресение";
+                    break;
+            };
+            return $"{label}., {number} пара {_weekDay}., {groupNumber} группа, {weekNumber}";
         }
     }
 }

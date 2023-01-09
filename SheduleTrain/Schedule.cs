@@ -15,6 +15,7 @@ namespace SheduleTrain
         Saturday,
         Sunday
     }
+
     public class Schedule
     {
         public string nameDepartment;
@@ -37,6 +38,28 @@ namespace SheduleTrain
                 Console.WriteLine(item.ToString());
             }
         }
+
+        public Dictionary<string, int> Count(string groupNum)
+        {
+            var result = new Dictionary<string, int>();
+            foreach (var lesson in this.listLessons)
+            {
+                if (!result.ContainsKey(lesson.weekDay.ToString()))
+                {
+                    result.Add(lesson.weekDay.ToString(), 1);
+                }
+                else
+                {
+                    result[lesson.weekDay.ToString()]++;
+                }
+            }
+
+            //this.listLessons.ToDictionary(key => key.weekDay, num => this.listLessons.Count(p => p.weekDay == num.weekDay));
+
+            return result;
+        }
+
+        
     }
 
     public class Lesson

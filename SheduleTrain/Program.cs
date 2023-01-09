@@ -20,7 +20,7 @@ namespace SheduleTrain
             Lesson lesAlg = new Lesson("Алгебра", 2, 1, WeekDays.Monday, "11");
             Lesson lesAlgPract = new Lesson("Алгебра", 2, 1, WeekDays.Monday, "21");
 
-            newSchedule.ShowCountResult("12");
+            newSchedule.ShowCountResult("13");
         }
     }
 }

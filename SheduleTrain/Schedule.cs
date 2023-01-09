@@ -50,7 +50,8 @@ namespace SheduleTrain
                 }
                 else
                 {
-                    result[lesson.weekDay.ToString()]++;
+                    if(groupNum == lesson.groupNumber)
+                        result[lesson.weekDay.ToString()]++;
                 }
             }
 

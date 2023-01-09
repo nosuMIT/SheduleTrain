@@ -59,7 +59,14 @@ namespace SheduleTrain
             return result;
         }
 
-        
+        public void ShowCountResult(string groupNum)
+        {
+            var result = Count(groupNum);
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
+        }
     }
 
     public class Lesson

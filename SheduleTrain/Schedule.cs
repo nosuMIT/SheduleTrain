@@ -30,6 +30,20 @@ namespace SheduleTrain
             listLessons.Add(lesson);
         }
 
+        public Dictionary<WeekDays,int> Count(string groupNumber)
+        {
+            var filter = listLessons.Where(les => les.groupNumber == groupNumber);
+                                    //.ToDictionary(les => les.weekDay, les => les.weekDay++);
+            Dictionary<WeekDays, int> answer = new Dictionary<WeekDays, int>();
+            foreach(var item in filter)
+            {
+                if (!answer.ContainsKey(item.weekDay))
+                    answer[item.weekDay] = 1;
+                else answer[item.weekDay]++;
+            }
+            return answer;
+        }
+
         public new void ToString()
         {
             foreach (var item in listLessons)

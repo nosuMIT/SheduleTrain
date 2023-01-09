@@ -70,10 +70,31 @@ namespace SheduleTrain
             this.groupNumber = groupNumber;
         }
 
-
+        public string GetRusWeekDay()
+        {
+            switch (weekDay)
+            {
+                case WeekDays.Monday:
+                    return "Понедельник";
+                case WeekDays.Tuesday:
+                    return "Вторник";
+                case WeekDays.Wednesday:
+                    return "Среда";
+                case WeekDays.Thursday:
+                    return "Четверг";
+                case WeekDays.Friday:
+                    return "Пятница";
+                case WeekDays.Saturday:
+                    return "Суббота";
+                case WeekDays.Sunday:
+                    return "Воскресенье";
+            }
+            return "";
+        }
         public override string ToString()
         {
-            return $"{label}., {number} пара {weekDay}., {groupNumber} группа, {weekNumber}";
+            var weekDayRus = GetRusWeekDay();
+            return $"{label}., {number} пара {weekDayRus}., {groupNumber} группа, {weekNumber}";
         }
     }
 }

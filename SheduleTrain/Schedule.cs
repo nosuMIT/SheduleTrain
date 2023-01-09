@@ -29,7 +29,37 @@ namespace SheduleTrain
     {
         public string nameDepartment;
         List<Lesson> listLessons = new List<Lesson>();
-
+        public Dictionary<RussianDays, int> count = new Dictionary<RussianDays, int>();
+        public bool IsExists(Lesson t, List<Lesson> l)
+        {
+            for (int i = 0; i < l.Count; i++)
+            {
+                if (t.weekDay == l[i].weekDay && t.groupNumber == l[i].groupNumber) return true;
+            }
+            return false;
+        }
+        public Dictionary<RussianDays, int> Count(string groupNumber)
+        {
+            Dictionary<RussianDays, int> table = new Dictionary<RussianDays, int>();
+            List<Lesson> content = new List<Lesson>();
+            for (int i = 0; i < listLessons.Count; i++) //пока занулим всё
+            {
+                RussianDays day = listLessons[i].weekDay;
+                table.Add(day, 1);
+            }
+            for (int i = 0; i < listLessons.Count; i++)
+            {
+                for (int j = i; j < listLessons.Count; j++)
+                {
+                    if (listLessons[i].groupNumber == groupNumber && listLessons[i].weekDay == listLessons[j].weekDay && listLessons[j].groupNumber == groupNumber && !IsExists(listLessons[i], content))
+                    {
+                        table[listLessons[i].weekDay]++;
+                    }
+                }
+                content.Add(listLessons[i]);
+            }
+            return table;
+        }
         public Schedule(string name)
         {
             nameDepartment = name;
@@ -47,36 +77,9 @@ namespace SheduleTrain
                 Console.WriteLine(item.ToString());
             }
         }
-        public bool IsExists(Lesson t,List<Lesson>l)
-        {
-            for (int i = 0; i < l.Count; i++)
-            {
-                if (t.weekDay == l[i].weekDay && t.groupNumber == l[i].groupNumber) return true;
-            }
-            return false;
-        }
-        public Dictionary<RussianDays,int> Count(string groupNumber)
-        {
-            Dictionary<RussianDays, int> table = new Dictionary<RussianDays, int>();
-            List<Lesson>content=new List<Lesson>();
-            for (int i = 0; i < listLessons.Count; i++) //пока занулим всё
-            {
-                RussianDays day = listLessons[i].weekDay;
-                table.Add(day,1);
-            }
-            for(int i=0;i<listLessons.Count;i++)
-            {
-                for (int j = i; j < listLessons.Count; j++)
-                {
-                    if (listLessons[i].groupNumber==groupNumber && listLessons[i].weekDay==listLessons[j].weekDay && listLessons[j].groupNumber == groupNumber && !IsExists(listLessons[i],content))
-                    {
-                        table[listLessons[i].weekDay]++;
-                    }
-                }
-                content.Add(listLessons[i]);
-            }
-            return table;
-        }
+        
+        
+        
     }
 
     public class Lesson

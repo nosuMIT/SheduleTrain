@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SheduleTrain
 {
     public enum WeekDays
     {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+        понедельник,
+        вторник,
+        среда,
+        четверг,
+        пятница,
+        суббота,
+        воскресенье
     }
     public class Schedule
     {
@@ -37,6 +38,13 @@ namespace SheduleTrain
                 Console.WriteLine(item.ToString());
             }
         }
+        //public static Tuple<string, int>[] Count(string groupName)
+        //{
+        //    int count = 0;
+        //    return Regex.Split(groupName, @"\W+")
+        //        .Where(n => n != "").Select(Lesson.)
+             
+        //}
     }
 
     public class Lesson

@@ -12,7 +12,7 @@ namespace SheduleTrain
             GenerateData.Generate();
             Schedule newSchedule = GenerateData.scheduleFMCS;
             newSchedule.ToString();
-
+            newSchedule.Count();
         }
     }
 }

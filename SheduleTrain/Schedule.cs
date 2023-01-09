@@ -37,6 +37,27 @@ namespace SheduleTrain
                 Console.WriteLine(item.ToString());
             }
         }
+
+        public Dictionary<WeekDays, int> Count()
+        {
+            var dic = Enum.GetValues(typeof(WeekDays))
+                        .Cast<WeekDays>()
+                        .ToList()
+                        .ToDictionary(weekDay => weekDay, weekDay => listLessons.Count(lesson => lesson.weekDay == weekDay));
+            return dic;
+            
+
+
+
+            //var dict = listLessons.GroupBy(lesson => lesson.weekDay)
+            //                        .ToDictionary(group => group.Key, group => group.Count());
+            //foreach (var item in dic)
+            //{
+            //    if(!dict.ContainsKey(item)) 
+            //        dict.Add(item, 0);
+            //}
+            //return dict;
+        }
     }
 
     public class Lesson

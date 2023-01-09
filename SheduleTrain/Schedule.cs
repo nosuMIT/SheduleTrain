@@ -15,6 +15,16 @@ namespace SheduleTrain
         Saturday,
         Sunday
     }
+    public enum RussianDays
+    {
+        Понедельник,
+        Вторник,
+        Среда,
+        Четверг,
+        Пятница,
+        Суббота,
+        Воскресенье
+    }
     public class Schedule
     {
         public string nameDepartment;
@@ -45,7 +55,7 @@ namespace SheduleTrain
         public string label;
         public int number;
         public int weekNumber;
-        public WeekDays weekDay;
+        public RussianDays weekDay;
         public string groupNumber;
 
         private static char symb = 'A';
@@ -57,11 +67,11 @@ namespace SheduleTrain
             symb++;
             number = random.Next(1, 4);
             weekNumber = random.Next(0, 2);
-            weekDay = (WeekDays)random.Next(1, 7);
+            weekDay = (RussianDays)random.Next(1, 7);
             groupNumber = random.Next(11, 13).ToString();
         }
 
-        public Lesson(string label, int number, int weekNumber, WeekDays weekDay, string groupNumber)
+        public Lesson(string label, int number, int weekNumber, RussianDays weekDay, string groupNumber)
         {
             this.label = label;
             this.number = number;

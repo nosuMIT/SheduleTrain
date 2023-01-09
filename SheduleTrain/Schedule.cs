@@ -45,10 +45,9 @@ namespace SheduleTrain
                         .ToList()
                         .ToDictionary(weekDay => weekDay, weekDay => listLessons.Count(lesson => lesson.weekDay == weekDay));
             return dic;
-            
 
 
-
+            #region второй вариант
             //var dict = listLessons.GroupBy(lesson => lesson.weekDay)
             //                        .ToDictionary(group => group.Key, group => group.Count());
             //foreach (var item in dic)
@@ -57,6 +56,17 @@ namespace SheduleTrain
             //        dict.Add(item, 0);
             //}
             //return dict;
+            #endregion
+        }
+        /// <summary>
+        /// выводит количество пар по каждому дню недели
+        /// </summary>
+        public void PrintPrettyCount()
+        {
+            foreach (var item in this.Count())
+            {
+                Console.WriteLine($"{item.Key} : {item.Value} пар");
+            }
         }
     }
 

@@ -7,13 +7,13 @@ namespace SheduleTrain
 {
     public enum WeekDays
     {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+        понедельник,
+        вторник,
+        среда,
+        четверг,
+        пятница,
+        суббота,
+        воскресенье
     }
     public class Schedule
     {
